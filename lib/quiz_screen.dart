@@ -1,9 +1,11 @@
 import 'dart:async';
 
+import 'package:demo_application/PointsScreen.dart';
 import 'package:demo_application/api_services.dart';
 import 'package:demo_application/const/colors.dart';
 import 'package:demo_application/const/images.dart';
 import 'package:demo_application/const/text_style.dart';
+import 'package:demo_application/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -21,6 +23,7 @@ class _QuizScreenState extends State<QuizScreen> {
   late Future quiz;
 
   int points = 0;
+  int totalQuestions = 0;
 
   var isLoaded = false;
 
@@ -176,7 +179,7 @@ class _QuizScreenState extends State<QuizScreen> {
                             setState(() {
                               if (answer.toString() == optionsList[index].toString()) {
                                 optionsColor[index] = Colors.green;
-                                points = points + 10;
+                                points = points + 1;
                               } else {
                                 optionsColor[index] = Colors.red;
                               }
@@ -187,7 +190,7 @@ class _QuizScreenState extends State<QuizScreen> {
                                 });
                               } else {
                                 timer!.cancel();
-                                //here you can do whatever you want with the results
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => ResultPopup(points: points)));//here you can do whatever you want with the results
                               }
                             });
                           },

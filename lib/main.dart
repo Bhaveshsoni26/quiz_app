@@ -1,10 +1,14 @@
+import 'dart:ui';
+
 import 'package:demo_application/const/colors.dart';
 import 'package:demo_application/const/images.dart';
 import 'package:demo_application/const/text_style.dart';
 import 'package:demo_application/quiz_screen.dart';
+import 'package:demo_application/PointsScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(statusBarColor: blue));
@@ -55,7 +59,10 @@ class QuizApp extends StatelessWidget {
                   border: Border.all(color: lightgrey, width: 2),
                 ),
                 child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      // saveCompilationTrace();
+                      SystemNavigator.pop();
+                    },
                     icon: const Icon(
                       CupertinoIcons.xmark,
                       color: Colors.white,
@@ -89,7 +96,7 @@ class QuizApp extends StatelessWidget {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    child: headingText(color: blue, size: 18, text: "Continue"),
+                    child: headingText(color: blue, size: 18, text: "Start Quiz"),
                   ),
                 ),
               )
